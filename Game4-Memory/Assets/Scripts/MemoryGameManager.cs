@@ -9,11 +9,14 @@ public class MemoryGameManager : MonoBehaviour {
     public MemoryCube firstCube = null;
     public MemoryCube secondCube;
 
+    private int numberOfRemainingPairs;
+
 	// Use this for initialization
 	void Start () {
 		foreach(MemoryCube cube in cubes) {
             cube.manager = this;
         }
+        numberOfRemainingPairs = cubes.Length / 2;
 	}
     
     IEnumerator CompareCubesDelayed() {
@@ -22,6 +25,13 @@ public class MemoryGameManager : MonoBehaviour {
         if (firstCube.secondaryColor == secondCube.secondaryColor) {
             Destroy(firstCube.gameObject);
             Destroy(secondCube.gameObject);
+
+            numberOfRemainingPairs--;
+            if (numberOfRemainingPairs <= 0)
+            {
+                Debug.Log("Vous avez gagné!");
+            }
+
         } else {
             firstCube.Hide();
             secondCube.Hide();
