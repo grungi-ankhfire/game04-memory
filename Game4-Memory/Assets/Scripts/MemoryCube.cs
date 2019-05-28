@@ -6,6 +6,7 @@ public class MemoryCube : MonoBehaviour {
 
     public Color baseColor;
     public Color secondaryColor;
+    public MemoryGameManager manager;
 
     private Renderer render;
 
@@ -16,12 +17,16 @@ public class MemoryCube : MonoBehaviour {
 
     }
 
+    public void Reveal() {
+        render.material.color = secondaryColor;
+    }
+
+    public void Hide() {
+        render.material.color = baseColor;
+    }
+
     private void OnMouseDown() {
-        if (render.material.color == baseColor) {
-            render.material.color = secondaryColor;
-        } else {
-            render.material.color = baseColor;
-        }
+        manager.CubeClicked(this);
     }
 
 }
