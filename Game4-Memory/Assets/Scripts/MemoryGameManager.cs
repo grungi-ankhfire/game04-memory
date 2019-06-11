@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MemoryGameManager : MonoBehaviour {
 
@@ -8,6 +9,8 @@ public class MemoryGameManager : MonoBehaviour {
 
     public MemoryCube firstCube = null;
     public MemoryCube secondCube;
+
+    public Text score;
 
     [Range(0, 10)]
     public int numberOfCubePairs;
@@ -17,7 +20,8 @@ public class MemoryGameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         numberOfRemainingPairs = numberOfCubePairs;
-	}
+        score.text = numberOfRemainingPairs.ToString();
+    }
     
     IEnumerator CompareCubesDelayed() {
         yield return new WaitForSeconds(2f);
@@ -27,6 +31,7 @@ public class MemoryGameManager : MonoBehaviour {
             Destroy(secondCube.gameObject);
 
             numberOfRemainingPairs--;
+            score.text = numberOfRemainingPairs.ToString();
             if (numberOfRemainingPairs <= 0)
             {
                 Debug.Log("Vous avez gagné!");
