@@ -347,6 +347,7 @@ MonoBehaviour:
   - {fileID: 0}
   firstCube: {fileID: 0}
   secondCube: {fileID: 0}
+  score: {fileID: 478254520}
   numberOfCubePairs: 4
 --- !u!4 &1042187769
 Transform:
