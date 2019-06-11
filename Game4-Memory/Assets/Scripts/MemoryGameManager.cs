@@ -9,14 +9,14 @@ public class MemoryGameManager : MonoBehaviour {
     public MemoryCube firstCube = null;
     public MemoryCube secondCube;
 
+    [Range(0, 10)]
+    public int numberOfCubePairs;
+
     private int numberOfRemainingPairs;
 
 	// Use this for initialization
 	void Start () {
-		foreach(MemoryCube cube in cubes) {
-            cube.manager = this;
-        }
-        numberOfRemainingPairs = cubes.Length / 2;
+        numberOfRemainingPairs = numberOfCubePairs;
 	}
     
     IEnumerator CompareCubesDelayed() {

@@ -12,9 +12,9 @@ public class MemoryCube : MonoBehaviour {
 
     // Use this for initialization
 	void Start () {
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MemoryGameManager>();
         render = GetComponent<Renderer>();
         render.material.color = baseColor;
-
     }
 
     public void Reveal() {
